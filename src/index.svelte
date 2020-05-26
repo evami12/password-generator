@@ -4,7 +4,7 @@
   let specialCharacters = false;
   let uppercase = false;
 
-  let passwordLength = 4;
+  let passwordLength = 8;
   let password = "";
 
   function makePassword() {
@@ -15,7 +15,7 @@
       specialCharacters === false &&
       uppercase === false
     ) {
-      password = "Please choose a checkbox";
+      password = "Please tick at least one checkbox";
     } else {
       while (password.length < passwordLength) {
         let randomSelection = Math.floor(Math.random() * 4 + 1);
@@ -50,8 +50,8 @@
   <input
     class="slider"
     type="range"
-    min="1"
-    max="15"
+    min="4"
+    max="20"
     bind:value={passwordLength} />
 
   <p>I would like:</p>
@@ -65,4 +65,9 @@
   Uppercase Letters
   <button on:click={makePassword}>Generate Password!</button>
   {password}
+
+{#if passwordLength < 6}
+<p>Password should be at least 6 letters</p>
+{/if}
+
 </section>
