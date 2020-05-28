@@ -6,7 +6,6 @@
 
   let passwordLength = 8;
   let password = "";
-  let passwordItems = "";
 
   function makePassword() {
     password = "";
@@ -48,22 +47,39 @@
     bind:value={passwordLength} />
 
   <p>I would like:</p>
-  <input type="checkbox" bind:checked={lowercase} group={passwordItems} />
-  Lowercase Letters
-  <input type="checkbox" bind:checked={numbers} />
-  Numbers
-  <input type="checkbox" bind:checked={specialCharacters} />
-  Special Characters
-  <input type="checkbox" bind:checked={uppercase} />
-  Uppercase Letters
 
-  
+<label>
+  <input type="checkbox" bind:checked={lowercase} />
+  Lowercase Letters
+</label>  
+
+<label>
+<input type="checkbox" bind:checked={numbers} />
+  Numbers
+</label>  
+
+<label>
+<input type="checkbox" bind:checked={specialCharacters} />
+  Special Characters
+</label>  
+
+<label>
+<input type="checkbox" bind:checked={uppercase} />
+  Uppercase Letters
+</label>
+
+
+<label>
   {#if lowercase === false && numbers === false && specialCharacters === false && uppercase === false}
-    <p>Please tick a box</p>
+    <p>Please select a checkbox</p>
   {:else}
-    <button on:click={makePassword}>Generate Password!</button>
+    <button class="button is-success" on:click={makePassword}>Generate Password!</button>
   {/if}
-  {password}
+</label>
+
+ {password}
+
+
   {#if passwordLength < 6}
     <p>Password should be at least 6 letters</p>
   {/if}
