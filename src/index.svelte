@@ -1,17 +1,25 @@
 <script>
+//Creating variables for different character types & numbers
   let lowercase = true;
   let numbers = false;
   let specialCharacters = false;
   let uppercase = false;
 
+
+  //Setting default password length to 8
   let passwordLength = 8;
   let password = "";
 
   function makePassword() {
+    console.log('Generate Password button is clicked')
     password = "";
 
     while (password.length < passwordLength) {
+      console.log('Generating password loop started')
+
+      //Randomly selecting which type of character to choose
       let randomSelection = Math.floor(Math.random() * 4 + 1);
+
       if (randomSelection === 1 && lowercase) {
         let randomNum = Math.floor(Math.random() * 26 + 97);
         password += String.fromCharCode(randomNum);
@@ -70,6 +78,7 @@
 
 
 <label>
+<!--If No checkboxes are selected, the button will disappear and it will prompt input from user-->
   {#if lowercase === false && numbers === false && specialCharacters === false && uppercase === false}
     <p>Please select a checkbox</p>
   {:else}
@@ -80,6 +89,7 @@
  {password}
 
 
+<!--Suggests a password length of at least six if user selects number less than six-->
   {#if passwordLength < 6}
     <p>Password should be at least 6 letters</p>
   {/if}
