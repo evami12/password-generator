@@ -7,36 +7,47 @@
 
   //Setting default password length to 8
   let passwordLength = 8;
-  let password = "";
+  let password = ""
 
   function makePassword() {
     console.log("Generate Password button is clicked");
     password = "";
+    const lowercaseMin = 97
+    const lowercaseRange = 26
+
+    const numbersMin = 48
+    const numbersRange = 10
+
+    const specialCharactersMin = 33
+    const specialCharactersRange = 11
+
+    const uppercaseMin = 65
+    const uppercaseRange = 26
 
     while (password.length < passwordLength) {
       console.log("Generating password loop started");
-
-      //Randomly selecting which type of character to choose
       let randomSelection = Math.floor(Math.random() * 4 + 1);
 
+      //Randomly selecting which type of character to choose
       if (randomSelection === 1 && lowercase) {
-        let randomNum = Math.floor(Math.random() * 26 + 97);
+        let randomNum = Math.floor(Math.random() * lowercaseRange + lowercaseMin);
         password += String.fromCharCode(randomNum);
       }
       if (randomSelection === 2 && numbers) {
-        let randomNum = Math.floor(Math.random() * 10 + 48);
+        let randomNum = Math.floor(Math.random() * numbersRange + numbersMin);
         password += String.fromCharCode(randomNum);
       }
       if (randomSelection === 3 && specialCharacters) {
-        let randomNum = Math.floor(Math.random() * 11 + 33);
+        let randomNum = Math.floor(Math.random() * specialCharactersRange + specialCharactersMin);
         password += String.fromCharCode(randomNum);
       }
       if (randomSelection === 4 && uppercase) {
-        let randomNum = Math.floor(Math.random() * 26 + 65);
+        let randomNum = Math.floor(Math.random() * uppercaseRange + uppercaseMin);
         password += String.fromCharCode(randomNum);
       }
     }
   }
+
 </script>
 
 <style>
@@ -63,7 +74,7 @@
   <input
     class="slider"
     type="range"
-    min="4"
+    min="6"
     max="20"
     bind:value={passwordLength} />
 
@@ -105,8 +116,8 @@
   <p id="password">Password: {password}</p>
 
   <!--Suggests a password length of at least six if user selects number less than six-->
-  {#if passwordLength < 6}
-    <p>Password should be at least 6 letters</p>
+  {#if passwordLength < 8}
+    <p>Password should be at least 8 characters</p>
   {/if}
 
 </section>
