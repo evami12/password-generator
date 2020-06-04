@@ -6,7 +6,7 @@
   let uppercase = false;
 
   //Setting default password length to 8
-  let passwordLength = 8;
+  let passwordLength = 10;
   let password = ""
 
   function makePassword() {
@@ -122,8 +122,8 @@
   <p id="password">Password: {password}</p>
 
   <!--Suggests a password length of at least eight if user selects number less than eight-->
-  {#if passwordLength < 8}
-    <p>Password should be at least 8 characters</p>
+  {#if passwordLength < 10}
+    <p>A good password should be at least 10 characters</p>
   {/if}
 
 </section>
