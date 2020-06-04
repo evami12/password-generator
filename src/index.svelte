@@ -11,9 +11,16 @@
 
   function makePassword() {
     console.log("Generate Password button is clicked");
+
+    //resets password
     password = "";
+
+    //creating constants for min and range of random character generator
     const lowercaseMin = 97
     const lowercaseRange = 26
+
+    const uppercaseMin = 65
+    const uppercaseRange = 26
 
     const numbersMin = 48
     const numbersRange = 10
@@ -21,18 +28,20 @@
     const specialCharactersMin = 33
     const specialCharactersRange = 11
 
-    const uppercaseMin = 65
-    const uppercaseRange = 26
-
     while (password.length < passwordLength) {
       console.log("Generating password loop started");
-      let randomSelection = Math.floor(Math.random() * 4 + 1);
 
       //Randomly selecting which type of character to choose
+      let randomSelection = Math.floor(Math.random() * 4 + 1);
+
       if (randomSelection === 1 && lowercase) {
         let randomNum = Math.floor(Math.random() * lowercaseRange + lowercaseMin);
         password += String.fromCharCode(randomNum);
       }
+      if (randomSelection === 4 && uppercase) {
+        let randomNum = Math.floor(Math.random() * uppercaseRange + uppercaseMin);
+        password += String.fromCharCode(randomNum);
+      }      
       if (randomSelection === 2 && numbers) {
         let randomNum = Math.floor(Math.random() * numbersRange + numbersMin);
         password += String.fromCharCode(randomNum);
@@ -41,10 +50,7 @@
         let randomNum = Math.floor(Math.random() * specialCharactersRange + specialCharactersMin);
         password += String.fromCharCode(randomNum);
       }
-      if (randomSelection === 4 && uppercase) {
-        let randomNum = Math.floor(Math.random() * uppercaseRange + uppercaseMin);
-        password += String.fromCharCode(randomNum);
-      }
+
     }
   }
 
@@ -87,6 +93,11 @@
     </label>
 
     <label>
+      <input type="checkbox" bind:checked={uppercase} />
+      Uppercase Letters
+    </label>
+
+    <label>
       <input type="checkbox" bind:checked={numbers} />
       Numbers
     </label>
@@ -94,11 +105,6 @@
     <label>
       <input type="checkbox" bind:checked={specialCharacters} />
       Special Characters
-    </label>
-
-    <label>
-      <input type="checkbox" bind:checked={uppercase} />
-      Uppercase Letters
     </label>
   </div>
 
@@ -115,7 +121,7 @@
 
   <p id="password">Password: {password}</p>
 
-  <!--Suggests a password length of at least six if user selects number less than six-->
+  <!--Suggests a password length of at least eight if user selects number less than eight-->
   {#if passwordLength < 8}
     <p>Password should be at least 8 characters</p>
   {/if}
