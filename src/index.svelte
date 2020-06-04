@@ -50,7 +50,6 @@
         let randomNum = Math.floor(Math.random() * specialCharactersRange + specialCharactersMin);
         password += String.fromCharCode(randomNum);
       }
-
     }
   }
 
@@ -119,7 +118,9 @@
     {/if}
   </label>
 
-  <p id="password">Password: {password}</p>
+  <p id="password">Password: </p>
+  
+  <p>{password}</p>
 
   <!--Suggests a password length of at least eight if user selects number less than eight-->
   {#if passwordLength < 10}
