@@ -5,20 +5,21 @@
   let specialCharacters = false;
   let uppercase = false;
 
-  //Setting default password length to 8
+  //Setting default password length to 10
   let passwordLength = 10;
-  let password = ""
+  let userPassword = ""
 
   function getPassword(){
-    makePassword(passwordLength, lowercase, uppercase, numbers, specialCharacters)
+    console.log("Generate Password button is clicked");
+
+    userPassword = makePassword(passwordLength, lowercase, uppercase, numbers, specialCharacters)
   }
 
 
   function makePassword(length, optionOne, optionTwo, optionThree, optionFour) {
-    console.log("Generate Password button is clicked");
-
+    console.log("Generating password")
     //resets password
-    password = "";
+    let password = "";
 
     //creating constants for min and range of random character generator
     const lowercaseMin = 97
@@ -126,7 +127,7 @@
 
   <p id="password">Password: </p>
   
-  <p>{password}</p>
+  <p>{userPassword}</p>
 
   <!--Suggests a password length of at least eight if user selects number less than eight-->
   {#if passwordLength < 10}
