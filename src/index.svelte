@@ -9,7 +9,12 @@
   let passwordLength = 10;
   let password = ""
 
-  function makePassword() {
+  function getPassword(){
+    makePassword(passwordLength, lowercase, uppercase, numbers, specialCharacters)
+  }
+
+
+  function makePassword(length, optionOne, optionTwo, optionThree, optionFour) {
     console.log("Generate Password button is clicked");
 
     //resets password
@@ -28,29 +33,30 @@
     const specialCharactersMin = 33
     const specialCharactersRange = 11
 
-    while (password.length < passwordLength) {
+    while (password.length < length) {
       console.log("Generating password loop started");
 
       //Randomly selecting which type of character to choose
       let randomSelection = Math.floor(Math.random() * 4 + 1);
 
-      if (randomSelection === 1 && lowercase) {
+      if (randomSelection === 1 && optionOne) {
         let randomNum = Math.floor(Math.random() * lowercaseRange + lowercaseMin);
         password += String.fromCharCode(randomNum);
       }
-      if (randomSelection === 4 && uppercase) {
+      if (randomSelection === 4 && optionTwo) {
         let randomNum = Math.floor(Math.random() * uppercaseRange + uppercaseMin);
         password += String.fromCharCode(randomNum);
       }      
-      if (randomSelection === 2 && numbers) {
+      if (randomSelection === 2 && optionThree) {
         let randomNum = Math.floor(Math.random() * numbersRange + numbersMin);
         password += String.fromCharCode(randomNum);
       }
-      if (randomSelection === 3 && specialCharacters) {
+      if (randomSelection === 3 && optionFour) {
         let randomNum = Math.floor(Math.random() * specialCharactersRange + specialCharactersMin);
         password += String.fromCharCode(randomNum);
       }
     }
+    return password
   }
 
 </script>
@@ -112,7 +118,7 @@
     {#if lowercase === false && numbers === false && specialCharacters === false && uppercase === false}
       <p>Please select a checkbox</p>
     {:else}
-      <button class="button is-success" on:click={makePassword}>
+      <button class="button is-success" on:click={getPassword}>
         Generate Password!
       </button>
     {/if}
