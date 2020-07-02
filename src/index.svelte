@@ -1,5 +1,5 @@
 <script>
-  //Creating variables for different character types & numbers
+  //Creating variables for different character types & numbers. lowercase is automatically true so the user is less likely to select no options. 
   let lowercase = true;
   let numbers = false;
   let specialCharacters = false;
@@ -9,10 +9,11 @@
   let passwordLength = 10;
   let userPassword = ""
 
-//function takes user inputs and sends them to the makePassword function then gets the result and gives it to the user
+//function takes user inputs and sends them to the makePassword function then gets the result and gives it to the user 
   function getPassword(){
     console.log("Generate Password button is clicked");
 
+    //sending the user selections to the makepassword funtion
     userPassword = makePassword(passwordLength, lowercase, uppercase, numbers, specialCharacters)
   }
 
