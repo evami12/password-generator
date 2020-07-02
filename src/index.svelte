@@ -18,7 +18,7 @@
   }
 
 
-//function generates a random password based on the options selected by the users and returns the value to the getPassword function. it creates constants for ranges for rng. The function randomly chooses an option of character type from the user selected options and generates a random number within the range which is then translated from charcode into a character. it then returns password. 
+//function generates a random password based on the options received from the getPAssword function and returns the value to the getPassword function. it creates constants for ranges for rng. The function randomly chooses an option of character type from the user selected options and generates a random number within the range which is then translated from charcode into a character. it then returns password. 
   function makePassword(length, optionOne, optionTwo, optionThree, optionFour) {
     console.log("Generating password")
     //resets password
