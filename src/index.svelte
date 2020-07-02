@@ -41,13 +41,14 @@
     const specialCharactersMin = 33
     const specialCharactersRange = 11
 
+    //loops the code to make a password the length the user wants
     while (password.length < length) {
       console.log("Generating password loop started");
 
       //Randomly selecting which type of character to choose
       let randomSelection = Math.floor(Math.random() * 4 + 1);
 
-      //takes the random selection and generated a random character/number from within the selection (tyoe of character)
+      //takes the random selection and generated a random character/number from within the selection (type of character). then adds it to the password
       if (randomSelection === 1 && optionOne) {
         let randomNum = Math.floor(Math.random() * lowercaseRange + lowercaseMin);
         password += String.fromCharCode(randomNum);
