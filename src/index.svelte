@@ -5,10 +5,11 @@
   let specialCharacters = false;
   let uppercase = false;
 
-  //Setting default password length to 10
+  //Setting default password length to 10 and clearing result
   let passwordLength = 10;
   let userPassword = ""
 
+//function takes user inputs and sends them to the makePassword function then gets the result and gives it to the user
   function getPassword(){
     console.log("Generate Password button is clicked");
 
@@ -16,21 +17,26 @@
   }
 
 
+//function generates a random password based on the options selected by the users and returns the value to the getPassword function. The function randomly chooses an option of character type from the user selected options and generates a random number within the range which is then translated from charcode into a character. it then returns password. 
   function makePassword(length, optionOne, optionTwo, optionThree, optionFour) {
     console.log("Generating password")
     //resets password
     let password = "";
 
-    //creating constants for min and range of random character generator
+    //creating constants for min and range of random character generator for the charcode
+    //setting charcode min of lowercase to 97 and range to 26
     const lowercaseMin = 97
     const lowercaseRange = 26
 
+    //setting charcode min of uppercase to 65 and range to 26
     const uppercaseMin = 65
     const uppercaseRange = 26
 
+    //setting charcode min of numbers to 48 and range to 10
     const numbersMin = 48
     const numbersRange = 10
 
+    //setting charcode min of special characters to 33 and range to 11
     const specialCharactersMin = 33
     const specialCharactersRange = 11
 
@@ -40,6 +46,7 @@
       //Randomly selecting which type of character to choose
       let randomSelection = Math.floor(Math.random() * 4 + 1);
 
+      //takes the random selection and generated a random character/number from within the selection (tyoe of character)
       if (randomSelection === 1 && optionOne) {
         let randomNum = Math.floor(Math.random() * lowercaseRange + lowercaseMin);
         password += String.fromCharCode(randomNum);
